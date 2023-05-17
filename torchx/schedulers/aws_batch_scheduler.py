@@ -476,7 +476,7 @@ class AWSBatchScheduler(DockerWorkspaceMixin, Scheduler[AWSBatchOpts]):
         for role_idx, role in enumerate(app.roles):
             values = macros.Values(
                 img_root="",
-                app_id=name,
+                app_id=f"{queue}:{name}",
                 # this only resolves for role.args
                 # if the entrypoint is run with sh or bash
                 # but won't actually work for macros in env vars
